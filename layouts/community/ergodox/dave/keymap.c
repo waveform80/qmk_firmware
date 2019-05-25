@@ -150,7 +150,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
   switch(id) {
     case 0:
       if (record->event.pressed) {
-        SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
+        SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " v" QMK_VERSION);
       }
       break;
     case 1:
@@ -173,7 +173,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case VRSN:
       if (record->event.pressed) {
-        SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
+        SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " v" QMK_VERSION);
       }
       return false;
       break;
