@@ -19,7 +19,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * | Esc    |   1  |   2  |   3  |   4  |   5  |   6  |           |   6  |   7  |   8  |   9  |   0  |   -  |   =    |
  * |--------+------+------+------+------+------+------|           |------+------+------+------+------+------+--------|
- * | Tab    |   Q  |   W  |   E  |   R  |   T  |   Y  |           |   G  |   Y  |   U  |   I  |   O  |   P  | Enter  |
+ * | Tab    |   Q  |   W  |   E  |   R  |   T  |   Y  |           |   G  |   Y  |   U  |   I  |   O  |   P  |   \    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | LCtrl  |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  | Enter  |
  * |--------+------+------+------+------+------|   H  |           |   B  |------+------+------+------+------+--------|
@@ -49,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             KC_SPC, MO(NAVI), KC_LGUI,
         // right hand
              KC_6,    KC_7,   KC_8,   KC_9,   KC_0,   KC_MINS, KC_EQUAL,
-             KC_G,    KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,    KC_ENTER,
+             KC_G,    KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,    KC_NUBS,
                       KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN, KC_ENTER,
              KC_B,    KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH, KC_RSFT,
                               KC_RALT,KC_LBRC,KC_RBRC,KC_NO,   CTL_T(KC_QUOT),
