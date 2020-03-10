@@ -10,7 +10,9 @@
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // can always be here
   EPRM,
-  VRSN
+  VRSN,
+  MAILH,
+  MAILW
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -110,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        | Left | Down | Rght | Del  | PgDn |------|           |------|      | Back | Del  | Fwrd |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        | Back |      | Fwrd | Vrsn |      |      |           | Flsh |      | Lclk | MsUp | RClk |      |        |
+ * |        |      | Mail | Mail | Vrsn |      |      |           | Flsh |      | Lclk | MsUp | RClk |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |VolDn | Mute |VolUp |      |                                       | MsLt | MsDn | MsRt |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -127,7 +129,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,
        KC_TRNS, KC_HOME, KC_UP,   KC_END,  KC_INS,  KC_PGUP, KC_TRNS,
        KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_DELT, KC_PGDN,
-       KC_TRNS, KC_WBAK, KC_TRNS, KC_WFWD, VRSN,    KC_TRNS, KC_TRNS,
+       KC_TRNS, KC_TRNS, MAILH,   MAILW,   VRSN,    KC_TRNS, KC_TRNS,
        KC_TRNS, KC_VOLD, KC_MUTE, KC_VOLU, KC_TRNS,
                                            KC_TRNS, KC_TRNS,
                                                     TO(BASE),
@@ -177,6 +179,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
+    case MAILH:
+      if (record->event.pressed) {
+        SEND_STRING ("dave\"waveform.org.uk");
+      }
+      return false;
+      break;
+    case MAILW:
+      if (record->event.pressed) {
+        SEND_STRING ("dave.jones\"canonical.com");
+      }
+      return false;
+      break;
   }
   return true;
 }
@@ -205,7 +219,7 @@ void matrix_scan_user(void) {
     /* Loop over each LED/layer */
     for (led = 1; led <= 3; ++led) {
         /* If the current layer matches the current LED, increment its
-         * brightness by 1 up to a maximum of 255. If the current layer doesn't
+         * brightness by 1 up to a maximum of 127. If the current layer doesn't
          * match, decrement its brightness by 1 down to a minimum of zero.
          */
         leds[led] += (layer == led) ?
@@ -220,6 +234,4 @@ void matrix_scan_user(void) {
             ergodox_right_led_off(led);
         }
     }
-
-
 };
